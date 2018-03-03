@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<package packageName="com.ucpaas.sms.modules" author="jackLiu" date="2017-10-25" version="v1.0" company="云之迅" destDir="E:/Code/huangwenjie/Master/sms-pay">
+	<!-- moduleName: 模块名字,用于包名.模块名.类名 -->
+	<module moduleName="client" moduleNameZh="客户管理">
+		<table tableName="t_sms_account" description="用户信息表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_client_order" description="品牌客户订单表" dbKey="sub_id" tablePrefix="t_sms" overwrite="false"></table>
+	</module>
+
+	<module moduleName="emp" moduleNameZh="员工管理">
+		<table tableName="t_sms_extendport_assign" description="用户端口分配范围表" dbKey="extendname" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_user" description="用户表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_user_price_log" description="后付费用户价格变更记录" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_user_role" description="用户角色关系表" dbKey="ru_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_user_gw" description="用户通道表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_role" description="角色表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_role_menu" description="角色菜单关系表" dbKey="role_menu_Id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_menu" description="菜单表" dbKey="menu_id" tablePrefix="t_sms" overwrite="false"></table>
+	</module>
+
+	<module moduleName="sms" moduleNameZh="短信管理">
+		<table tableName="t_sms_access_0" description="access基表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_access_channel_statistics" description="客户发送统计表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_access_molog" description="客户上行明细表" dbKey="moid" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_record_0" description="短信记录流水表" dbKey="smsuuid" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_record_channel_statistics" description="通道发送统计表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_record_molog" description="通道上行明细表" dbKey="moid" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_black_list" description="黑名单表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_keyword_list" description="关键字表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_mt" description="下行短信表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_mt_phone" description="下行短信号码表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_tariff" description="计费费率表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+	</module>
+
+	<module moduleName="sys" moduleNameZh="系统管理">
+		<table tableName="t_sms_area" description="地区表" dbKey="area_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_channel" description="短信通道信息表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_channel_black_list" description="通道黑名单表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_channel_keyword_list" description="通道关键字表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_channel_ref_channelgroup" description="通道与通道组关系表" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_channelgroup" description="通道组明细表" dbKey="channelgroupid" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_oprate_log" description="操作日志表" dbKey="log_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_table_update_time" description="表更新时间" dbKey="id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_dict" description="数据字典表" dbKey="param_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_param" description="参数表" dbKey="param_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_phone_section" description="手机号段表" dbKey="phone_section" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_operater_segment" description="运营商号段表" dbKey="operater" tablePrefix="t_sms" overwrite="false"></table>
+	</module>
+
+	<module moduleName="task" moduleNameZh="定时任务">
+		<table tableName="t_sms_task" description="定时任务表" dbKey="task_id" tablePrefix="t_sms" overwrite="false"></table>
+		<table tableName="t_sms_task_log" description="定时任务日志" dbKey="log_id" tablePrefix="t_sms" overwrite="false"></table>
+	</module>
+</package>
+
+
+

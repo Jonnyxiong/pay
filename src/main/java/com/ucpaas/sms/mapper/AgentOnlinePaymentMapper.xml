@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ucpaas.sms.mapper.AgentOnlinePaymentMapper">
+     
+        
+    <resultMap id="rowMapper" type="com.ucpaas.sms.dto.CloudOnlinePayment">
+        <result property="paymentId" jdbcType="VARCHAR" column="payment_id"/>
+        <result property="userId" jdbcType="VARCHAR" column="user_id"/>
+        <result property="flowId" jdbcType="VARCHAR" column="flow_id"/>
+        <result property="paymentAmount" jdbcType="DECIMAL" column="payment_amount"/>
+        <result property="paymentMode" jdbcType="INTEGER" column="payment_mode"/>
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+        <result property="orderId" jdbcType="VARCHAR" column="order_id"/>
+        <result property="paymentState" jdbcType="INTEGER" column="payment_state"/>
+        <result property="remark" jdbcType="VARCHAR" column="remark"/>
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+    </resultMap> 
+     
+    <sql id="BASE_COLUMN_LIST">
+        payment_id,
+        user_id,
+        flow_id,
+        payment_amount,
+        payment_mode,
+        create_time,
+        order_id,
+        payment_state,
+        remark,
+        update_time
+    </sql>
+
+
+
+    <select id="queryList" resultMap="rowMapper">
+       select * from t_sms_cloud_online_payment where user_id=1
+    </select>
+
+
+	 
+</mapper>
+

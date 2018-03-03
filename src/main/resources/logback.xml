@@ -1,0 +1,95 @@
+<!-- runtime扫描文件配置，每隔30秒扫一次 -->
+<configuration scan="true" scanPeriod="30 seconds">
+    <property name="app_name" value="smse-web"/>
+    <property name="file_path" value="${app_name}-logs"/>
+    <!-- <property name="file_path" value="logs" /> -->
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--格式化输出 -->
+            <pattern>%date [%thread] %-5level %c{1}.%method\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- 每天生成eror日志文件 -->
+    <appender name="operation_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${file_path}/operation/operation.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${file_path}/operation.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %c{1}.%method\(%line\) - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+    </appender>
+
+    <!-- 每天生成eror日志文件 -->
+    <appender name="error_file"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${file_path}/error/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${file_path}/error.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %c{1}.%method\(%line\) - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!--个性化日志配置-->
+    <appender name="halfHourAccessRecordService"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文件输出的文件名 -->
+        <file>${file_path}/halfHourAccessRecordService.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${file_path}/halfHourAccessRecordService.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date [%thread] %-5level %c{1}.%method\(%line\) - %msg%n
+            </pattern>
+        </encoder>
+        <!--日志文件最大的大小 <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                <MaxFileSize>10MB</MaxFileSize> </triggeringPolicy> -->
+    </appender>
+
+    <logger name="halfHourAccessRecordService" level="DEBUG">
+        <appender-ref ref="halfHourAccessRecordService"/>
+    </logger>
+
+    <logger name="com.ucpaas.sms" level="debug"/>
+    <logger name="com.ibatis" level="INFO"/>
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="INFO"/>
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="INFO"/>
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="INFO"/>
+    <logger name="java.sql.Connection" level="INFO"/>
+    <logger name="java.sql.Statement" level="INFO"/>
+    <logger name="java.sql.PreparedStatement" level="INFO"/>
+    <logger name="org.mybatis" level="warn"/>
+    <logger name="org.apache.ibatis" level="warn"/>
+    <logger name="com.couchbase.client" level="warn"/>
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.thymeleaf" level="warn"/>
+    <logger name="springfox.documentation" level="warn"/>
+    <logger name="com.zaxxer.hikari" level="warn"/>
+
+    <!-- 测试、线上环境的日志输出 -->
+    <root level="debug">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="error_file"/>
+        <!--<appender-ref ref="operation_file"/>-->
+    </root>
+</configuration>
+        
